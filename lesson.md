@@ -28,7 +28,24 @@ By the end of this session, you will be able to:
 
 ---
 
+## 🗣️ Plain-English Jargon Buster
+
+Keep this table handy — every technical term in this lesson, translated.
+
+| Term | Plain English |
+|------|---------------|
+| **DataFrame** | A spreadsheet in Python — rows and columns |
+| **Series** | A single column with labels |
+| **index** | The row labels — like row numbers in Excel, but you can rename them |
+| **`.loc`** | Look up by street address / label (e.g. `data.loc['Ohio']`) |
+| **`.iloc`** | Look up by GPS coordinates / position (e.g. `data.iloc[0]`) |
+| **vectorization** | Do it to the whole column at once instead of row by row |
+
+---
+
 ## 🏃 Part 1: Structures & Modification (60 min)
+
+**Why this Part exists:** Before you can analyse any data, you need to get it into a table Python understands — the DataFrame. Everything else in the course builds on this.
 
 ### 🎯 Focus
 LO1 — Create and modify Pandas data structures.
@@ -45,13 +62,28 @@ Open the notebook `notebooks/pandas_lesson.ipynb` and follow along.
 
 ### 🛠️ Activity: "The Inventory System"
 
-Create a DataFrame representing a store inventory, add columns for `Price` and `Stock`, and calculate `Total Value`.
+**Scenario:** You manage a small grocery store and need to track your fruit inventory. This is the starter data (it's in the notebook as `fruit_data`):
+
+| fruit  | quantity |
+|--------|----------|
+| Apple  | 100      |
+| Banana | 40       |
+| Cherry | 200      |
+| Date   | 20       |
+
+**Tasks:**
+1. Create a DataFrame named `inventory` from the dictionary `fruit_data`.
+2. Add a new column `price` with values `[3.0, 4.0, 2.0, 5.0]`.
+3. Add a column `total_value` which is `quantity * price` — no loop needed, just multiply the columns.
+4. Create a boolean column `low_stock` that is `True` if quantity is less than 50.
 
 > **Discussion:** How does vectorization (operating on entire columns at once) replace the need for loops?
 
 ---
 
 ## 🏃 Part 2: The Art of Selection (60 min)
+
+**Why this Part exists:** Real datasets have thousands of rows — you almost never want all of them. Selecting exactly the rows and columns you need is the single most-used skill in pandas.
 
 ### 🎯 Focus
 LO2 — Indexing and Selection (`.loc`, `.iloc`, `[]`).
@@ -68,17 +100,28 @@ LO2 — Indexing and Selection (`.loc`, `.iloc`, `[]`).
 
 ### 🛠️ Activity: "Data Detective"
 
-Given a dataset with specific targets, extract:
+You'll work with this small DataFrame (created in the notebook as `data` — four US states as row labels, columns `one` to `four` holding the numbers 0–15):
 
-1. Rows 5–10.
-2. The `Email` column for users in `Texas`.
-3. Update values for specific rows using `.loc`.
+|          | one | two | three | four |
+|----------|-----|-----|-------|------|
+| Ohio     | 0   | 1   | 2     | 3    |
+| Colorado | 4   | 5   | 6     | 7    |
+| Utah     | 8   | 9   | 10    | 11   |
+| New York | 12  | 13  | 14    | 15   |
+
+**Tasks:**
+1. Select the rows for `'Utah'` and `'New York'` only.
+2. Select the value in the `'two'` column for `'Ohio'` (should be 1).
+3. Select all rows where column `'three'` is greater than 5.
+4. Update the value of `'four'` in the `'New York'` row to be 100 (use `.loc`).
 
 > **Question:** "Which method would you use to select the last row of a DataFrame — `.loc` or `.iloc`? Why?"
 
 ---
 
 ## 🏃 Part 3: Analysis & Operations (60 min)
+
+**Why this Part exists:** Once you can select data, the next step is to transform and order it — apply custom logic to a column, sort to find winners, rank to compare. This is where raw tables start becoming answers.
 
 ### 🎯 Focus
 LO3 (Functions) & LO4 (Sort/Rank).
@@ -93,12 +136,21 @@ LO3 (Functions) & LO4 (Sort/Rank).
 
 ### 🛠️ Activity: "Leaderboard Logic"
 
-Given a dataset of game scores:
+**Scenario:** You have exam scores and need to rank students and assign a Pass/Fail status. Starter data (in the notebook as `scores`):
 
-1. Create a function to categorize scores (e.g., `'High'` / `'Low'`).
-2. Apply it to create a `Category` column.
-3. Sort the data to find the winner.
-4. Rank the players.
+| Student | Math | Science |
+|---------|------|---------|
+| Alice   | 85   | 70      |
+| Bob     | 45   | 55      |
+| Charlie | 92   | 88      |
+| David   | 60   | 72      |
+
+**Tasks:**
+1. Run the starter code in the notebook to create the `scores` DataFrame.
+2. Sort the DataFrame by `'Math'` score in descending order (highest first).
+3. Create a new column `'Math_Rank'` using the `.rank()` method.
+4. Define a function that returns `"Pass"` if score >= 60 and `"Fail"` otherwise.
+5. Apply this function to the `'Math'` column to create a new `'Status'` column.
 
 ### 💬 Reflection
 

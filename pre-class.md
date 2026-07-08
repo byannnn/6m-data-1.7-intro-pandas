@@ -45,11 +45,10 @@ conda activate pds
 ```
 
 
-```
-pip install pandas numpy
-# Or using conda:
-conda install pandas numpy
-```
+> **Do I need to install pandas separately?**
+> - **Colab users:** skip this — pandas and numpy are pre-installed.
+> - **If you set up the conda environment above:** you're done — the environment already includes pandas and numpy.
+> - **Only if you're NOT using conda:** run `pip install pandas numpy` in your terminal.
 
 #### **Verification**
 
