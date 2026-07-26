@@ -38,7 +38,7 @@ By the end of this lesson, you will be able to:
 
 ## 🛠️ Tools & Setup
 
-- **[Google Colab](https://colab.research.google.com)** *(recommended)*: No installation needed.
-- **[VS Code](https://code.visualstudio.com)** + Python + Jupyter extensions *(alternative)*.
+- **[VS Code](https://code.visualstudio.com)** + Python + Jupyter extensions *(recommended)*.
 - **Notebook:** `notebooks/pandas_lesson.ipynb` — open in Colab or VS Code with the `pds` kernel.
 - **Environment:** `conda env create -f environment.yml` then `conda activate pds` (VS Code users only).
+- **[Google Colab](https://colab.research.google.com)**: No installation needed *(alternative)*.
